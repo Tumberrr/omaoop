@@ -1,0 +1,1 @@
+print(len('https://wimg.rule34.xxx'))
