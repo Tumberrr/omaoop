@@ -223,7 +223,7 @@ async def play_next(guild_id, vol=volume):
                 "-f",
                 "bestaudio[ext=webm]/bestaudio[ext=m4a]/bestaudio/best",
                 "--cookies",
-                "cookies.txt",
+                "/app/cookies.txt",
 
                 "--no-playlist",
 
