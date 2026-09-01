@@ -222,13 +222,14 @@ async def play_next(guild_id, vol=volume):
                 "yt_dlp",
                 "-f",
                 "bestaudio[ext=webm]/bestaudio[ext=m4a]/bestaudio/best",
+                "--cookies",
+                "cookies.txt",
 
                 "--no-playlist",
 
                 "--quiet",
                 "--no-warnings",
                 "--no-progress",
-                "cookiefile": "cookies.txt",
                 "--force-ipv4",
 
                 "--retries",
