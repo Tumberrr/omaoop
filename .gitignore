@@ -1,2 +1,16 @@
-.env
+__pycache__/
+*.py[cod]
 .venv/
+venv/
+.vscode/
+
+music/
+*.mp3
+*.wav
+*.ogg
+
+*.db
+*.sqlite
+*.sqlite3
+
+.env
