@@ -1,0 +1,12 @@
+services:
+  bot:
+    build: .
+    container_name: my-discord-bot
+    restart: unless-stopped
+
+    environment:
+      TOKEN: ${TOKEN}
+
+    volumes:
+      - ./db:/app/db
+      
