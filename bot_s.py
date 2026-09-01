@@ -228,7 +228,7 @@ async def play_next(guild_id, vol=volume):
                 "--quiet",
                 "--no-warnings",
                 "--no-progress",
-
+                "cookiefile": "cookies.txt",
                 "--force-ipv4",
 
                 "--retries",
