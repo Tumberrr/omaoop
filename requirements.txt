@@ -4,3 +4,4 @@ beautifulsoup4
 aiohttp
 yt-dlp
 PyNaCl
+davey
