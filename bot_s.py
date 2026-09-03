@@ -1030,7 +1030,6 @@ async def on_voice_state_update(member, before, after):
 async def get_posts(tag='zenless_zone_zero'):
 
     url = "https://api.rule34.xxx/index.php"
-    print
     if tag != 'zenless_zone_zero':
 
         params = {
@@ -1051,7 +1050,7 @@ async def get_posts(tag='zenless_zone_zero'):
                 "q": "index",
                 "tags": tag,
                 "limit": 1000,
-                "pid": random.randint(1, 100),                    
+                "pid": random.randint(1, 200),                    
                 "json": 1,
                 "api_key": 'e7ac39308cce91c12e034952af1925480c646b11c757203931ce314dcbdeabf3e4e71a5eceaec3a745ffef3b1bb436623daf8b26dd943cbd13057003c050599f',
                 "user_id": 6733123 }
@@ -1069,27 +1068,35 @@ async def get_posts(tag='zenless_zone_zero'):
 posts=[]
 zzz_lock = asyncio.Lock()
 @bot.command()
-async def zzz(ctx, amount: int = 5, tag:str ='zenless_zone_zero'):
+async def zzz(ctx, amount: int = 5, *, tag:str ='zenless_zone_zero'):
     try:
+        tag =tag.split(' ')
+        tag = '_'.join(tag)
+        print(tag)
         if zzz_lock.locked():
-            ctx.send('Уже выполняет команду')
+            await ctx.send('Уже выполняет команду')
             return
         async with zzz_lock:
             print(tag)
             posts = await get_posts(tag)
-
-            print("Получено постов:", len(posts))
             print(posts)
 
-            bad_tags = {"furry", "shemale", "futanari",'tentacles', 'loli', 'roblox'}
+            print("Получено постов:", len(posts))
+
+            bad_tags = {"furry", "shemale", "futanari",'tentacles', 'loli', 'roblox', 'poop', 'yuri'}
 
             for post in random.sample(posts, amount):
                 tags = set(post["tags"].split())
 
                 if not tags.intersection(bad_tags):
                     await ctx.send(post["file_url"])
+            print(tags)
     except Exception as e:
-        await ctx.send(f"Ошибка {e}")
+        print(e)
+        if posts == None:
+            await ctx.send(f'Ошибка: Нет в базе данных')
+        else:
+            await ctx.send(f"Ошибка: {e}")
 
 
 
