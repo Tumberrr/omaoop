@@ -987,15 +987,17 @@ async def top(ctx):
     db = connect('db/exp.db')
 
     c = db.cursor()
-    c.execute("""
-    SELECT * FROM EXPERIENCE_TELEGRAM ORDER BY experience
-""")
-    data_telegram = c.fetchall()
-    print(data_telegram)
-    answer_telegram = ''
-    for x in data_telegram:
-        answer_telegram = f"Пользователь {x[1]} имеет {x[2]} EXP; Ранг: {x[3]}" + "\n" + answer_telegram
-    answer_telegram = f"Рейтинг Телеграмм \n" + answer_telegram
+    # Убираем тг бота
+
+#     c.execute("""
+#     SELECT * FROM EXPERIENCE_TELEGRAM ORDER BY experience
+# """)
+#     data_telegram = c.fetchall()
+#     print(data_telegram)
+#     answer_telegram = ''
+#     for x in data_telegram:
+#         answer_telegram = f"Пользователь {x[1]} имеет {x[2]} EXP; Ранг: {x[3]}" + "\n" + answer_telegram
+#     answer_telegram = f"Рейтинг Телеграмм \n" + answer_telegram
 
     c.execute("""
     SELECT * FROM EXPERIENCE ORDER BY experience
