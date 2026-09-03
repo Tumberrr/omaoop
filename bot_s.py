@@ -1085,6 +1085,13 @@ async def zzz(ctx, amount: int = 5, *, tag:str ='zenless_zone_zero'):
 
             bad_tags = {"furry", "shemale", "futanari",'tentacles', 'loli', 'roblox', 'poop', 'yuri'}
 
+            if len(posts) == 0:
+                await ctx.send(f'Ошибка: Нет в базе данных')
+                return 400
+
+            if len(posts) < amount and not(len(posts) == 0):
+                await ctx.send('Ошибка: Количество запрошенных фоток превышает существующее')
+                return 400
             for post in random.sample(posts, amount):
                 tags = set(post["tags"].split())
 
